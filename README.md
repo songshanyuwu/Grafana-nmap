@@ -21,6 +21,7 @@
 - **dashboard.yml**：一个配置文件，指定Grafana的仪表板提供者设置。
 - **datasource.yml**：配置Grafana使用包含Nmap扫描数据的SQLite数据库作为数据源。
 - **/data/nmap_results.db**：容器中SQLite数据库的位置。
+- **nmap-did-what/grafana-docker/grafana-storage/plugins/frser-sqlite-datasource**：容器中frser-sqlite插件的位置。
 
 ## 使用方法
 
