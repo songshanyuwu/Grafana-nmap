@@ -61,6 +61,14 @@ cd Grafana-nmap/grafana-docker
 docker-compose up -d
 ```
 
+注意：docker-compose.yml和docker-compose-proxy.yml只保留一个
+选择方法：
+3.1 如果有代理，则选择docker-compose-proxy.yml，需要修改文件中的IP的端口
+
+3.2 如果没有代理，需要先下载frser-sqlite-datasource-3.5.0.zip https://storage.googleapis.com/plugins-community/frser-sqlite-datasource/release/3.5.0/frser-sqlite-datasource-3.5.0.zip
+并且先运行一次docker容器，将解压后的文件全部复制到文件中，路径：Grafana-nmap/grafana-docker/grafana-storage/plugins/frser-sqlite-datasource
+
+
 4. **访问Grafana**
 
 容器启动并运行后，通过您的网络浏览器访问Grafana仪表板：
