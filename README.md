@@ -62,12 +62,18 @@ docker-compose up -d
 ```
 
 注意：docker-compose.yml和docker-compose-proxy.yml只保留一个
+
 选择方法：
+
 3.1 如果有代理，则选择docker-compose-proxy.yml，需要修改文件中的IP的端口
 
-3.2 如果没有代理，需要先下载frser-sqlite-datasource-3.5.0.zip https://storage.googleapis.com/plugins-community/frser-sqlite-datasource/release/3.5.0/frser-sqlite-datasource-3.5.0.zip
-并且先运行一次docker容器，将解压后的文件全部复制到文件中，路径：Grafana-nmap/grafana-docker/grafana-storage/plugins/frser-sqlite-datasource
+3.2 如果没有代理，需要先下载[frser-sqlite-datasource-3.5.0.zip](https://storage.googleapis.com/plugins-community/frser-sqlite-datasource/release/3.5.0/frser-sqlite-datasource-3.5.0.zip)
+并且先运行一次docker容器，将解压后的文件全部复制到下列路径：
 
+```
+Grafana-nmap/grafana-docker/grafana-storage/plugins/frser-sqlite-datasource
+```
+![frser-sqlite-datasource-3.5.0解压复制](https://github.com/songshanyuwu/Grafana-nmap/img/)
 
 4. **访问Grafana**
 
@@ -81,6 +87,9 @@ http://localhost:3000
 使用默认的Grafana凭据(admin/admin)，除非在配置中更改。Nmap仪表板应该已加载了来自您的Nmap扫描的数据。
 
 可以在数据库中查看多次扫描，并且可以使用Nmap仪表板的时间过滤器根据扫描的时间戳查看扫描信息。
+
+
+
 
 ## 定制
 
