@@ -1,76 +1,76 @@
 # nmap-did-what
 
-**nmap-did-what** is a Grafana docker container and a Python script to parse Nmap XML output to an SQLite database. The SQLite database is used as a datasource within Grafana to view the Nmap scan details in a dashboard.
+**nmap-did-what** 是一个Grafana Docker容器和一个Python脚本，用于解析Nmap XML输出到SQLite数据库。SQLite数据库在Grafana中用作数据源，以仪表板的形式查看Nmap扫描的详细信息。
 
-Full Tutorial is available here - [Nmap Dashboard using Grafana](https://hackertarget.com/nmap-dashboard-with-grafana/)
+完整的教程在这里 - [使用Grafana的Nmap仪表板](https://hackertarget.com/nmap-dashboard-with-grafana/)
 
-![Grafana Dashboard](https://hackertarget.com/images/nmap-grafana-dashboard.webp)
+![Grafana仪表板](https://hackertarget.com/images/nmap-grafana-dashboard.webp)
 
-## Overview
+## 概览
 
-The project consists of two main components:
+该项目由两个主要部分组成：
 
-1. A Python script that parses Nmap XML output and stores the data in an SQLite database.
-2. A Grafana Docker container with a pre-configured dashboard for visualizing the Nmap scan data.
+1. 一个Python脚本，用于解析Nmap XML输出，并将数据存储在SQLite数据库中。
+2. 一个预配置了仪表板的Grafana Docker容器，用于可视化Nmap扫描数据。
 
-### File Structure
+### 文件结构
 
-- **nmap-to-sqlite.py**: A Python script that parses Nmap XML output and stores the data in an SQLite database.
-- **Dockerfile**: Creates a Docker container based on the official Grafana image, including the necessary configurations for the SQLite data source and dashboard.
-- **docker-compose.yml**: A Docker Compose file that sets up the Grafana container, configuring it to use the SQLite database and including volumes for persistent storage and configuration.
-- **dashboard.yml**: A configuration file that specifies the dashboard provider settings for Grafana.
-- **datasource.yml**: Configures Grafana to use the SQLite database containing the Nmap scan data as the data source.
-- **/data/nmap_results.db**: location in container for the SQLite DB.
+- **nmap-to-sqlite.py**：一个解析Nmap XML输出并将数据存储在SQLite数据库中的Python脚本。
+- **Dockerfile**：基于官方Grafana镜像创建Docker容器，包括SQLite数据源和仪表板所需的配置。
+- **docker-compose.yml**：一个Docker Compose文件，设置Grafana容器，配置它使用SQLite数据库，并包括用于持久化存储和配置的卷。
+- **dashboard.yml**：一个配置文件，指定Grafana的仪表板提供者设置。
+- **datasource.yml**：配置Grafana使用包含Nmap扫描数据的SQLite数据库作为数据源。
+- **/data/nmap_results.db**：容器中SQLite数据库的位置。
 
+## 使用方法
 
-## Usage
+要开始使用nmap-did-what，请确保您的系统上已安装了Docker和Docker Compose。
 
-To get started with nmap-did-what, ensure you have Docker and Docker Compose installed on your system.
+按照以下步骤部署环境：
 
-Follow these steps to deploy the environment:
-
-1. **Clone the repository**
+1. **克隆仓库**
 
 ```
 git clone https://github.com/hackertarget/nmap-did-what.git
 ```
 
-2. **Parse Nmap XML output**
+2. **解析Nmap XML输出**
 
-Run the `nmap-to-sqlite.py` script to parse your Nmap XML output and store the data in an SQLite database:
+运行`nmap-to-sqlite.py`脚本，将您的Nmap XML输出解析并存储在SQLite数据库中：
 
 ```
 cd nmap-did-what/data/
 python nmap-to-sqlite.py nmap_output.xml
 ```
 
-3. **Start the Grafana Container**
+3. **启动Grafana容器**
 
-Use Docker Compose to start the Grafana container:
+使用Docker Compose启动Grafana容器：
 
 ```
 cd nmap-did-what
 docker-compose up -d
 ```
 
-4. **Access Grafana**
+4. **访问Grafana**
 
-Once the container is up and running, access the Grafana dashboard through your web browser:
+容器启动并运行后，通过您的网络浏览器访问Grafana仪表板：
 
 ```
 http://localhost:3000
 ```
 
-Use the default Grafana credentials (admin/admin) unless changed in the configuration. The Nmap dashboard should be loaded with the data from your Nmap scans.
 
-Multiple scans can be reviewed within the DB and the Nmap Dashboard time filters can be used to the view the scan information based on the time stamps from the scans.
+使用默认的Grafana凭据(admin/admin)，除非在配置中更改。Nmap仪表板应该已加载了来自您的Nmap扫描的数据。
 
-## Customization
+可以在数据库中查看多次扫描，并且可以使用Nmap仪表板的时间过滤器根据扫描的时间戳查看扫描信息。
 
-- Modify the `nmap-to-sqlite.py` script to extract additional information from the Nmap XML output or to change the structure of the SQLite database.
-- Custom Dashboard are easy to implement, simply adjust the Grafana dashboard to your requirements. Export the JSON of the Dashboard and replace the default Dashboard or create additional dashboard. The ability to spin up a Grafana Docker container with a prebuilt Dashboard is a nice feature.
-- Automation is possible, as you can simply run **nmap** with a cron job, parse the XML with **nmap-to-sqlite.py** and the updated DB will have the newly acquired scan information.
+## 定制
 
-## Credits
+- 修改`nmap-to-sqlite.py`脚本，从Nmap XML输出中提取额外信息或更改SQLite数据库的结构。
+- 定制仪表板很容易实现，只需根据您的要求调整Grafana仪表板。导出仪表板的JSON并替换默认仪表板或创建额外的仪表板。启动一个带有预构建仪表板的Grafana Docker容器是一个不错的功能。
+- 自动化是可能的，因为您可以使用cron作业运行nmap，使用nmap-to-sqlite.py解析XML，更新的数据库将具有新获取的扫描信息。
 
-Thanks to the Nmap and Grafana projects for providing powerful open-source tools for network scanning and data visualization.
+## 致谢
+
+感谢Nmap和Grafana项目提供强大的开源工具，用于网络扫描和数据可视化。
