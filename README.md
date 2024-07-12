@@ -1,6 +1,6 @@
-# nmap-did-what
+# Grafana-nmap（原名：nmap-did-what）
 
-**nmap-did-what** 是一个Grafana Docker容器和一个Python脚本，用于解析Nmap XML输出到SQLite数据库。SQLite数据库在Grafana中用作数据源，以仪表板的形式查看Nmap扫描的详细信息。
+**Grafana-nmap（原名：nmap-did-what）** 是一个Grafana Docker容器和一个Python脚本，用于解析Nmap XML输出到SQLite数据库。SQLite数据库在Grafana中用作数据源，以仪表板的形式查看Nmap扫描的详细信息。
 
 完整的教程在这里 - [使用Grafana的Nmap仪表板](https://hackertarget.com/nmap-dashboard-with-grafana/)
 
@@ -24,14 +24,14 @@
 
 ## 使用方法
 
-要开始使用nmap-did-what，请确保您的系统上已安装了Docker和Docker Compose。
+要开始使用Grafana-nmap，请确保您的系统上已安装了Docker和Docker Compose。
 
 按照以下步骤部署环境：
 
 1. **克隆仓库**
 
 ```
-git clone https://github.com/hackertarget/nmap-did-what.git
+git clone https://github.com/songshanyuwu/Grafana-nmap.git
 ```
 
 2. **解析Nmap XML输出**
@@ -39,7 +39,7 @@ git clone https://github.com/hackertarget/nmap-did-what.git
 运行`nmap-to-sqlite.py`脚本，将您的Nmap XML输出解析并存储在SQLite数据库中：
 
 ```
-cd nmap-did-what/data/
+cd Grafana-nmap/data/
 python nmap-to-sqlite.py nmap_output.xml
 ```
 
@@ -48,7 +48,7 @@ python nmap-to-sqlite.py nmap_output.xml
 使用Docker Compose启动Grafana容器：
 
 ```
-cd nmap-did-what
+cd Grafana-nmap
 docker-compose up -d
 ```
 
