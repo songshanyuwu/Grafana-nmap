@@ -1,0 +1,27 @@
+version: '3'
+networks:
+    1panel-network:
+        external: true
+services:
+  grafana:
+    image: grafana/grafana-oss
+    container_name: grafana-nmap
+    networks:
+      - 1panel-network
+    ports:
+      - "3000:3000"
+    volumes:
+      - ../data:/data
+      - ./grafana-storage:/var/lib/grafana
+      - ./datasources:/etc/grafana/provisioning/datasources
+      - ./dashboards:/etc/grafana/provisioning/dashboards
+    environment:
+      - http_proxy=http://172.16.20.40:7890
+      - https_proxy=http://172.16.20.40:7890
+      - no_proxy=localhost,127.0.0.1
+      - GF_INSTALL_PLUGINS=frser-sqlite-datasource
+      - GF_PATHS_DATA=/var/lib/grafana
+      - GF_PATHS_LOGS=/var/log/grafana
+      - GF_PATHS_PLUGINS=/var/lib/grafana/plugins
+      - GF_PATHS_PROVISIONING=/etc/grafana/provisioning
+    user: "0:472"
