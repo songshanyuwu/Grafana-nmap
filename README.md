@@ -73,7 +73,7 @@ docker-compose up -d
 ```
 Grafana-nmap/grafana-docker/grafana-storage/plugins/frser-sqlite-datasource
 ```
-![frser-sqlite-datasource-3.5.0解压复制](https://github.com/songshanyuwu/Grafana-nmap/img/)
+![frser-sqlite-datasource-3.5.0解压复制](https://github.com/songshanyuwu/Grafana-nmap/blob/master/img/Snipaste_2024-07-12_09-32-32.png)
 
 4. **访问Grafana**
 
@@ -83,12 +83,19 @@ Grafana-nmap/grafana-docker/grafana-storage/plugins/frser-sqlite-datasource
 http://localhost:3000
 ```
 
-
 使用默认的Grafana凭据(admin/admin)，除非在配置中更改。Nmap仪表板应该已加载了来自您的Nmap扫描的数据。
 
 可以在数据库中查看多次扫描，并且可以使用Nmap仪表板的时间过滤器根据扫描的时间戳查看扫描信息。
 
+![首页](https://github.com/songshanyuwu/Grafana-nmap/blob/master/img/Snipaste_2024-07-12_09-33-53.png)
 
+![仪表板](https://github.com/songshanyuwu/Grafana-nmap/blob/master/img/Snipaste_2024-07-12_09-34-17.png)
+
+![nmap仪表板](https://github.com/songshanyuwu/Grafana-nmap/blob/master/img/Snipaste_2024-07-12_09-34-49.png)
+
+![展示1](https://github.com/songshanyuwu/Grafana-nmap/blob/master/img/Snipaste_2024-07-12_09-35-07.png)
+
+![展示2](https://github.com/songshanyuwu/Grafana-nmap/blob/master/img/Snipaste_2024-07-12_09-37-05.png)
 
 
 ## 定制
